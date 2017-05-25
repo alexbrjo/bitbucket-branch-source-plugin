@@ -78,6 +78,7 @@ import org.apache.commons.httpclient.methods.DeleteMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
+import org.apache.commons.httpclient.util.URIUtil;
 import org.apache.commons.lang.StringUtils;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonNode;
@@ -87,15 +88,16 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 public class BitbucketCloudApiClient implements BitbucketApi {
     private static final Logger LOGGER = Logger.getLogger(BitbucketCloudApiClient.class.getName());
-    private static final String V1_API_BASE_URL = "https://bitbucket.org/api/1.0/repositories/";
-    private static final String V2_API_BASE_URL = "https://bitbucket.org/api/2.0/repositories/";
-    private static final String V2_TEAMS_API_BASE_URL = "https://bitbucket.org/api/2.0/teams/";
+    private static final String V1_API_BASE_URL = "/api/1.0/repositories/";
+    private static final String V2_API_BASE_URL = "/api/2.0/repositories/";
+    private static final String V2_TEAMS_API_BASE_URL = "/api/2.0/teams/";
     private static final int MAX_PAGES = 100;
     private HttpClient client;
     private static final MultiThreadedHttpConnectionManager connectionManager = new MultiThreadedHttpConnectionManager();
     private final String owner;
     private final String repositoryName;
     private final UsernamePasswordCredentials credentials;
+    private final String server;
 
     static {
         connectionManager.getParams().setDefaultMaxConnectionsPerHost(20);
@@ -103,6 +105,10 @@ public class BitbucketCloudApiClient implements BitbucketApi {
     }
 
     public BitbucketCloudApiClient(String owner, String repositoryName, StandardUsernamePasswordCredentials creds) {
+        this(owner, repositoryName, creds, "https://bitbucket.org");
+    }
+
+    public BitbucketCloudApiClient(String owner, String repositoryName, StandardUsernamePasswordCredentials creds, String server) {
         if (creds != null) {
             this.credentials = new UsernamePasswordCredentials(creds.getUsername(), Secret.toString(creds.getPassword()));
         } else {
@@ -110,6 +116,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
         }
         this.owner = owner;
         this.repositoryName = repositoryName;
+        this.server = server;
     }
 
     /**
@@ -242,7 +249,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
     }
 
     public void deletePullRequestComment(String pullRequestId, String commentId) throws IOException, InterruptedException {
-        String path = V1_API_BASE_URL + this.owner + "/" + this.repositoryName + "/pullrequests/" + pullRequestId + "/comments/" + commentId;
+        String path = server + V1_API_BASE_URL + this.owner + "/" + this.repositoryName + "/pullrequests/" + pullRequestId + "/comments/" + commentId;
         deleteRequest(path);
     }
 
@@ -251,7 +258,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
      */
     @Override
     public void postCommitComment(@NonNull String hash, @NonNull String comment) throws IOException, InterruptedException {
-        String path = V1_API_BASE_URL + this.owner + "/" + this.repositoryName + "/changesets/" + hash + "/comments";
+        String path = server + V1_API_BASE_URL + this.owner + "/" + this.repositoryName + "/changesets/" + hash + "/comments";
         try {
             NameValuePair content = new NameValuePair("content", comment);
             postRequest(path, new NameValuePair[]{ content });
@@ -263,7 +270,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
     }
 
     public void deletePullRequestApproval(String pullRequestId) throws IOException, InterruptedException {
-        String path = V2_API_BASE_URL + this.owner + "/" + this.repositoryName + "/pullrequests/" + pullRequestId + "/approve";
+        String path = server + V2_API_BASE_URL + this.owner + "/" + this.repositoryName + "/pullrequests/" + pullRequestId + "/approve";
         deleteRequest(path);
     }
 
@@ -272,7 +279,8 @@ public class BitbucketCloudApiClient implements BitbucketApi {
      */
     @Override
     public boolean checkPathExists(@NonNull String branch, @NonNull String path) throws IOException, InterruptedException {
-        int status = getRequestStatus(V1_API_BASE_URL + owner + "/" + repositoryName + "/raw/" + branch + "/" + path);
+        String branchFile = URIUtil.encodePath(branch + "/" + path);
+        int status = getRequestStatus(server + V1_API_BASE_URL + owner + "/" + repositoryName + "/raw/" + branchFile);
         return status == HttpStatus.SC_OK;
     }
 
@@ -282,7 +290,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
     @NonNull
     @Override
     public String getDefaultBranch() throws IOException, InterruptedException {
-        String url = V1_API_BASE_URL + this.owner + "/" + this.repositoryName + "/main-branch";
+        String url = server + V1_API_BASE_URL + this.owner + "/" + this.repositoryName + "/main-branch";
         String response = getRequest(url);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode name = mapper.readTree(response).get("name");
@@ -298,7 +306,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
     @NonNull
     @Override
     public List<BitbucketCloudBranch> getBranches() throws IOException, InterruptedException {
-        String url = V1_API_BASE_URL + this.owner + "/" + this.repositoryName + "/branches";
+        String url = server + V1_API_BASE_URL + this.owner + "/" + this.repositoryName + "/branches";
         String response = getRequest(url);
         try {
             return parseBranchesJson(response);
@@ -313,7 +321,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
     @Override
     @CheckForNull
     public BitbucketCommit resolveCommit(@NonNull String hash) throws IOException, InterruptedException {
-        String url = V2_API_BASE_URL + owner + "/" + repositoryName + "/commit/" + hash;
+        String url = server + V2_API_BASE_URL + owner + "/" + repositoryName + "/commit/" + hash;
         String response;
         try {
             response = getRequest(url);
@@ -333,7 +341,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
     @NonNull
     @Override
     public String resolveSourceFullHash(@NonNull BitbucketPullRequest pull) throws IOException, InterruptedException {
-        String url = V2_API_BASE_URL + pull.getSource().getRepository().getOwnerName() + "/" +
+        String url = server + V2_API_BASE_URL + pull.getSource().getRepository().getOwnerName() + "/" +
                 pull.getSource().getRepository().getRepositoryName() + "/commit/" + pull.getSource().getCommit()
                 .getHash();
         String response = getRequest(url);
@@ -349,7 +357,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
      */
     @Override
     public void registerCommitWebHook(@NonNull BitbucketWebHook hook) throws IOException, InterruptedException {
-        postRequest(V2_API_BASE_URL + owner + "/" + repositoryName + "/hooks", asJson(hook));
+        postRequest(server + V2_API_BASE_URL + owner + "/" + repositoryName + "/hooks", asJson(hook));
     }
 
     /**
@@ -360,7 +368,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
         if (StringUtils.isBlank(hook.getUuid())) {
             throw new BitbucketException("Hook UUID required");
         }
-        deleteRequest(V2_API_BASE_URL + owner + "/" + repositoryName + "/hooks/" + URLEncoder.encode(hook.getUuid(), "UTF-8"));
+        deleteRequest(server + V2_API_BASE_URL + owner + "/" + repositoryName + "/hooks/" + URLEncoder.encode(hook.getUuid(), "UTF-8"));
     }
 
     /**
@@ -369,7 +377,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
     @NonNull
     @Override
     public List<BitbucketRepositoryHook> getWebHooks() throws IOException, InterruptedException {
-        String urlTemplate = V2_API_BASE_URL + this.owner + "/" + this.repositoryName + "/hooks?page=%d&pagelen=50";
+        String urlTemplate = server + V2_API_BASE_URL + this.owner + "/" + this.repositoryName + "/hooks?page=%d&pagelen=50";
         String url = urlTemplate;
         try {
             List<BitbucketRepositoryHook> repositoryHooks = new ArrayList<BitbucketRepositoryHook>();
@@ -397,7 +405,7 @@ public class BitbucketCloudApiClient implements BitbucketApi {
      */
     @Override
     public void postBuildStatus(@NonNull BitbucketBuildStatus status) throws IOException {
-        String path = V2_API_BASE_URL + this.owner + "/" + this.repositoryName + "/commit/" + status.getHash() + "/statuses/build";;
+        String path = server + V2_API_BASE_URL + this.owner + "/" + this.repositoryName + "/commit/" + status.getHash() + "/statuses/build";;
         postRequest(path, serialize(status));
     }
 
@@ -428,10 +436,10 @@ public class BitbucketCloudApiClient implements BitbucketApi {
     @CheckForNull
     public BitbucketTeam getTeam() throws IOException, InterruptedException {
         try {
-            String response = getRequest(V2_TEAMS_API_BASE_URL + owner);
+            String response = getRequest(server + V2_TEAMS_API_BASE_URL + owner);
             return parse(response, BitbucketCloudTeam.class);
         } catch (IOException e) {
-            throw new IOException("I/O error when parsing response from URL: " + V2_TEAMS_API_BASE_URL + owner, e);
+            throw new IOException("I/O error when parsing response from URL: " + server + V2_TEAMS_API_BASE_URL + owner, e);
 
         }
     }
@@ -446,9 +454,9 @@ public class BitbucketCloudApiClient implements BitbucketApi {
             throws InterruptedException, IOException {
         String urlTemplate;
         if (role != null && getLogin() != null) {
-            urlTemplate = V2_API_BASE_URL + owner + "?role=" + role.getId() + "&page=%s&pagelen=50";
+            urlTemplate = server + V2_API_BASE_URL + owner + "?role=" + role.getId() + "&page=%s&pagelen=50";
         } else {
-            urlTemplate = V2_API_BASE_URL + owner + "?page=%s&pagelen=50";
+            urlTemplate = server + V2_API_BASE_URL + owner + "?page=%s&pagelen=50";
         }
         String url;
         List<BitbucketCloudRepository> repositories = new ArrayList<BitbucketCloudRepository>();
