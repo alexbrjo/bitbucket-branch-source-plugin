@@ -25,7 +25,7 @@ function getHttpStatus ()
 
 Actual API
 ----------
-200: [https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/master/Jenkinsfile]
-200: [https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/master/README.md]
-404: [https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/no-jenkinsfile/Jenkinsfile]
-200: [https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/no-jenkinsfile/README.md]
+* [master/Jenkinsfile](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/master/Jenkinsfile)`200`
+* [master/README.md](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/master/README.md)`200`
+* [no-jenkinsfile/Jenkinsfile](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/no-jenkinsfile/Jenkinsfile)`404`
+* [no-jenkinsfile/README.md](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/no-jenkinsfile/README.md)`200`
