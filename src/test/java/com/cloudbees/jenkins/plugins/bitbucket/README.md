@@ -1,14 +1,13 @@
 Testing Approach PoC
 ====================
 Below is the basic concept. The tests get run against a local mock and can be confirmed against the
-server. This could be improved by created maven targets to test/confirm.
+server. This could be improved by creating Maven targets to test/confirm.
 ```
 if (CONFIRMATION_FLAG)
     ip = https://public.api.com
 else
     ip = http://localhost:PORT
 ```
-
 
 Mock API
 --------
@@ -25,7 +24,7 @@ function getHttpStatus ()
 
 Actual API
 ----------
-* [master/Jenkinsfile](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/master/Jenkinsfile)`200`
-* [master/README.md](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/master/README.md)`200`
-* [no-jenkinsfile/Jenkinsfile](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/no-jenkinsfile/Jenkinsfile)`404`
-* [no-jenkinsfile/README.md](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/no-jenkinsfile/README.md)`200`
+* `200` [master/Jenkinsfile](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/master/Jenkinsfile)
+* `200` [master/README.md](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/master/README.md)
+* `404` [no-jenkinsfile/Jenkinsfile](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/no-jenkinsfile/Jenkinsfile)
+* `200` [no-jenkinsfile/README.md](https://bitbucket.org/api/1.0/repositories/cloudbeers/potential-train/raw/no-jenkinsfile/README.md)
