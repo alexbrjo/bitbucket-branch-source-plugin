@@ -1,4 +1,4 @@
-package com.cloudbees.jenkins.plugins.bitbucket;
+package com.cloudbees.jenkins.plugins.bitbucket.httpserver;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -11,13 +11,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * A mocked BitbucketCloudApi
+ * A mocked BitbucketCloudApi. Don't use this use BitbucketLocalServlet
  *
  * @author Alex Johnson
  */
 public class MockBitbucketCloudApi implements Runnable {
     /** The default port to listen to */
-    private static final int DEFAULT_PORT = 8090;
+    private static final int DEFAULT_PORT = 9090;
     /** List of open servers */
     private static List<MockBitbucketCloudApi> services = new LinkedList<MockBitbucketCloudApi>();
 
@@ -95,7 +95,7 @@ public class MockBitbucketCloudApi implements Runnable {
         @Override
         public void handle(HttpExchange httpExchange) throws IOException {
 
-            int status = serveV1(httpExchange.getRequestURI().toString());
+            int status = getStatus(httpExchange.getRequestURI().toString());
             String json = "{'http_status': "  + status + "}";
 
             httpExchange.sendResponseHeaders(status, json.length());
@@ -104,7 +104,7 @@ public class MockBitbucketCloudApi implements Runnable {
             os.close();
         }
 
-        private int serveV1 (String uri) {
+        private int getStatus (String uri) {
             switch (uri) {
                 case "/api/1.0/repositories/cloudbeers/potential-train/raw/master/Jenkinsfile":
                 case "/api/1.0/repositories/cloudbeers/potential-train/raw/master/README.md":
