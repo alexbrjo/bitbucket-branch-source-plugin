@@ -18,7 +18,7 @@ import static junit.framework.TestCase.assertTrue;
  * Tests the BitbucketCloudApiClient using WireMock
  * @author Alex Johnson
  */
-public class WireMockTest {
+public class BitbucketHttpStatusTest {
     /** The WireMock server */
     @Rule
     public WireMockRule wireMockRule = new WireMockRule(8089);
