@@ -33,6 +33,10 @@ public class MockBitbucketCloudApi implements Runnable {
      * @param reqPort the port to listen to
      */
     public static int start (int reqPort) {
+        if(services.size() >= 10) {
+            throw new IllegalArgumentException("Too many servers. Calm down");
+        }
+
         MockBitbucketCloudApi m = new MockBitbucketCloudApi(reqPort);
         m.run();
         services.add(m);
@@ -47,6 +51,7 @@ public class MockBitbucketCloudApi implements Runnable {
         for (MockBitbucketCloudApi service : services) {
             if (service.getPort() == reqPort) {
                 service.close();
+                services.remove(service);
                 return true;
             }
         }
