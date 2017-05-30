@@ -1,0 +1,32 @@
+{
+  "id" : "9209338e-2913-3867-857f-f27fa71bd1c5",
+  "request" : {
+    "url" : "/api/1.0/repositories/cloudbeers/potential-train/raw/no-jenkinsfile/Jenkinsfile",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-no-jenkinsfile-Jenkinsfile-l1LHO.txt",
+    "headers" : {
+      "Server" : "nginx",
+      "Vary" : "Authorization",
+      "Cache-Control" : "max-age=900",
+      "Content-Type" : "text/plain",
+      "Strict-Transport-Security" : "max-age=31536000; includeSubDomains; preload",
+      "Date" : "Tue, 30 May 2017 18:09:45 GMT",
+      "X-Served-By" : "app-139",
+      "Expires" : "Tue, 30 May 2017 18:09:45 GMT",
+      "ETag" : "\"9d1ead73e678fa2f51a70a933b0bf017\"",
+      "X-Static-Version" : "1cc0811f4855",
+      "X-Accepted-OAuth-Scopes" : "repository",
+      "X-Render-Time" : "0.0449330806732",
+      "Connection" : "keep-alive",
+      "X-Request-Count" : "592",
+      "X-Frame-Options" : "SAMEORIGIN",
+      "Last-Modified" : "Tue, 30 May 2017 18:09:45 GMT",
+      "X-Version" : "1cc0811f4855",
+      "X-Cache-Info" : "caching"
+    }
+  },
+  "uuid" : "9209338e-2913-3867-857f-f27fa71bd1c5"
+}
