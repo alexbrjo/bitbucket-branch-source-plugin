@@ -1,6 +1,6 @@
 bitbucket branch source plugin - WireMock Demo
 ==============================================
-1. Clone this repo, delete current captured responses and open project in IDE
+1. Clone this repo, delete current captured responses and open project in IDE. Then, in test/java/.../WireMockCase.java change the `captureResponses` flag to `true`
 ```
 git clone https://github.com/alexbrjo/bitbucket-branch-source-plugin.git
 cd bitbucket-branch-source-plugin/
@@ -8,8 +8,9 @@ git checkout dev-wiremock
 rm -f src/test/resources/__files/*.json src/test/resources/mappings/*.json
 open ./ -a IntelliJ\ IDEA\ CE # if you have IntelliJ IDEA Community Edition
 ```
-In test/java/.../WireMockCase.java change the `captureResponses` flag to `true`
-``` private static boolean captureResponses = true; ```
+```
+private static boolean captureResponses = true;
+```
 
 2. Delete target and run tests
 ``` mvn clean install ```
