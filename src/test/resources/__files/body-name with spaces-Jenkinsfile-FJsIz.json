@@ -1,0 +1,11 @@
+node {
+    stage ('greet') {
+        sh 'echo help'
+    } 
+    stage ('do some work') {
+        sh 'echo working'
+    }
+    stage ('depart') {
+        sh 'echo adios'
+    }
+}

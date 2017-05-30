@@ -1,0 +1,30 @@
+{
+  "request" : {
+    "url" : "/rest/api/1.0/projects/cloudbeers/repos/potential-train",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-repos-potential-train-qRRSv.json",
+    "headers" : {
+      "Server" : "nginx",
+      "Vary" : "Accept-Language, Cookie, Accept-Encoding",
+      "Cache-Control" : "max-age=900",
+      "Content-Type" : "text/html; charset=utf-8",
+      "Strict-Transport-Security" : "max-age=31536000; includeSubDomains; preload",
+      "Date" : "Fri, 26 May 2017 17:38:36 GMT",
+      "X-Served-By" : "app-166",
+      "Content-Language" : "en",
+      "Accept-Ranges" : "bytes",
+      "X-Static-Version" : "66fb05933aef",
+      "ETag" : "\"3b2734d4d2748dbdacb197ece1bda0c3\"",
+      "X-Render-Time" : "0.0366148948669",
+      "Connection" : "keep-alive",
+      "X-Version" : "66fb05933aef",
+      "X-Request-Count" : "408",
+      "X-Frame-Options" : "SAMEORIGIN",
+      "X-Cache-Info" : "caching",
+      "Content-Length" : "27798"
+    }
+  }
+}

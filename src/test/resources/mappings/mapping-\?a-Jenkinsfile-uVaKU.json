@@ -1,0 +1,32 @@
+{
+  "request" : {
+    "url" : "/api/1.0/repositories/alexjo/bugrep-forest/raw/~%60!@%23$%25%5E&*()_%2B=%5B%5D%7B%7D%5C%7C;%22%3C%3E,./%5C%3Fa/Jenkinsfile",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-\\?a-Jenkinsfile-uVaKU.json",
+    "headers" : {
+      "Server" : "nginx",
+      "Vary" : "Authorization",
+      "Cache-Control" : "no-cache, no-store, must-revalidate, max-age=0",
+      "Content-Type" : "text/plain; charset=utf-8",
+      "Strict-Transport-Security" : "max-age=31536000; includeSubDomains; preload",
+      "Date" : "Fri, 26 May 2017 16:19:17 GMT",
+      "X-Served-By" : "app-141",
+      "Expires" : "Fri, 26 May 2017 16:19:17 GMT",
+      "ETag" : "\"c8ac55d58ac8da4149ad7537618a6728\"",
+      "X-Static-Version" : "66fb05933aef",
+      "X-Content-Type-Options" : "nosniff",
+      "X-Accepted-OAuth-Scopes" : "repository",
+      "X-Render-Time" : "0.041708946228",
+      "Connection" : "keep-alive",
+      "X-Request-Count" : "11",
+      "X-Frame-Options" : "SAMEORIGIN",
+      "Last-Modified" : "Fri, 26 May 2017 16:19:17 GMT",
+      "X-Version" : "66fb05933aef",
+      "X-Cache-Info" : "not cacheable; response specified \"Cache-Control: no-cache\"",
+      "Content-Length" : "175"
+    }
+  }
+}
