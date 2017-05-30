@@ -170,6 +170,13 @@ public class MocklessBranchScanningTest extends WireMockCase {
         assertTrue(api.checkPathExists("master", "README.md"));
         assertFalse(api.checkPathExists("no-jenkinsfile", "Jenkinsfile"));
         assertTrue(api.checkPathExists("no-jenkinsfile", "README.md"));
+
+        api = new BitbucketCloudApiClient("alexjo",
+                "bugrep-forest", null, "http://localhost:8080");
+
+        assertTrue(api.checkPathExists("name with spaces", "Jenkinsfile"));
+        assertTrue(api.checkPathExists("~`!@#$%^&*()_+=[]{}\\|;\"<>,./\\?a", "Jenkinsfile"));
+        assertFalse(api.checkPathExists("branch:dev-1234", "Jenkinsfile"));
     }
 
     /**

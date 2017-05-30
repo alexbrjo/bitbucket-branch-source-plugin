@@ -1,0 +1,33 @@
+{
+  "id" : "e5afd2dc-b2a6-35af-bafa-703a55eb3aa2",
+  "request" : {
+    "url" : "/api/1.0/repositories/cloudbeers/potential-train/raw/no-jenkinsfile/README.md",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-no-jenkinsfile-README.md-5GixD.txt",
+    "headers" : {
+      "Server" : "nginx",
+      "Vary" : "Authorization",
+      "Cache-Control" : "no-cache, no-store, must-revalidate, max-age=0",
+      "Content-Type" : "text/plain; charset=utf-8",
+      "Strict-Transport-Security" : "max-age=31536000; includeSubDomains; preload",
+      "Date" : "Tue, 30 May 2017 19:15:07 GMT",
+      "X-Served-By" : "app-140",
+      "Expires" : "Tue, 30 May 2017 19:15:07 GMT",
+      "ETag" : "\"46264bf6cf86190f83b5fabb6b9ae8a8\"",
+      "X-Static-Version" : "1cc0811f4855",
+      "X-Content-Type-Options" : "nosniff",
+      "X-Accepted-OAuth-Scopes" : "repository",
+      "X-Render-Time" : "0.0323710441589",
+      "Connection" : "keep-alive",
+      "X-Request-Count" : "696",
+      "X-Frame-Options" : "SAMEORIGIN",
+      "Last-Modified" : "Tue, 30 May 2017 19:15:07 GMT",
+      "X-Version" : "1cc0811f4855",
+      "X-Cache-Info" : "not cacheable; response specified \"Cache-Control: no-cache\""
+    }
+  },
+  "uuid" : "e5afd2dc-b2a6-35af-bafa-703a55eb3aa2"
+}

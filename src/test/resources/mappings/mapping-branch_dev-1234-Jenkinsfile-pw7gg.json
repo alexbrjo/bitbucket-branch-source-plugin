@@ -1,0 +1,30 @@
+{
+  "id" : "93027f9e-13a9-3636-8445-a6e0e278b7da",
+  "request" : {
+    "url" : "/api/1.0/repositories/alexjo/bugrep-forest/raw/branch:dev-1234/Jenkinsfile",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 404,
+    "bodyFileName" : "body-branch_dev-1234-Jenkinsfile-pw7gg.txt",
+    "headers" : {
+      "Server" : "nginx",
+      "Vary" : "Authorization",
+      "Cache-Control" : "max-age=900",
+      "Content-Type" : "text/plain; charset=utf-8",
+      "Strict-Transport-Security" : "max-age=31536000; includeSubDomains; preload",
+      "Date" : "Tue, 30 May 2017 19:15:07 GMT",
+      "X-Served-By" : "app-141",
+      "ETag" : "\"a8a253bc7cafa9c32a8361c45e5493ce\"",
+      "X-Static-Version" : "1cc0811f4855",
+      "X-Accepted-OAuth-Scopes" : "repository",
+      "X-Render-Time" : "0.0418260097504",
+      "Connection" : "keep-alive",
+      "X-Request-Count" : "353",
+      "X-Version" : "1cc0811f4855",
+      "X-Frame-Options" : "SAMEORIGIN",
+      "X-Cache-Info" : "caching"
+    }
+  },
+  "uuid" : "93027f9e-13a9-3636-8445-a6e0e278b7da"
+}

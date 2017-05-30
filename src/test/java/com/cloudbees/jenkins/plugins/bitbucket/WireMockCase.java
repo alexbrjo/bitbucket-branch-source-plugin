@@ -16,8 +16,6 @@ public abstract class WireMockCase {
 
     /** The WireMockCase server */
     private static WireMockServer server;
-    /** If WireMockCase should act as a proxy and capture Bitbucket responses */
-    private static boolean captureResponses = false;
 
     /**
      * Sets up the WireMockCase server
@@ -27,10 +25,13 @@ public abstract class WireMockCase {
         server = new WireMockServer(8080);
         server.enableRecordMappings(new SingleRootFileSource("src/test/resources/mappings"),
                 new SingleRootFileSource( "src/test/resources/__files"));
-        if (captureResponses) {
+
+        /** If WireMockCase should act as a proxy and capture Bitbucket responses */
+        if ("true".equalsIgnoreCase(System.getProperty("WIREMOCK_CAPTURE"))) {
             server.stubFor(get(urlMatching(".*"))
                     .willReturn(aResponse().proxiedFrom("https://bitbucket.org")));
         }
+
         server.start();
     }
 

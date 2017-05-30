@@ -12,7 +12,7 @@ import hudson.Extension;
 public class BitbucketCloudApiFactory extends BitbucketApiFactory {
     @Override
     protected boolean isMatch(@Nullable String serverUrl) {
-        return serverUrl == null;
+        return (serverUrl == null || serverUrl.contains("localhost"));
     }
 
     @NonNull

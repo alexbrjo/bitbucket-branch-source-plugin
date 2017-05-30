@@ -1,0 +1,33 @@
+{
+  "id" : "fcb710ea-5634-3056-b717-6963e38fb4e5",
+  "request" : {
+    "url" : "/api/1.0/repositories/alexjo/bugrep-forest/raw/~%60!@%23$%25%5E&*()_%2B=%5B%5D%7B%7D%5C%7C;%22%3C%3E,./%5C%3Fa/Jenkinsfile",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-\\_a-Jenkinsfile-nRMXD.txt",
+    "headers" : {
+      "Server" : "nginx",
+      "Vary" : "Authorization",
+      "Cache-Control" : "no-cache, no-store, must-revalidate, max-age=0",
+      "Content-Type" : "text/plain; charset=utf-8",
+      "Strict-Transport-Security" : "max-age=31536000; includeSubDomains; preload",
+      "Date" : "Tue, 30 May 2017 19:15:07 GMT",
+      "X-Served-By" : "app-143",
+      "Expires" : "Tue, 30 May 2017 19:15:07 GMT",
+      "ETag" : "\"c8ac55d58ac8da4149ad7537618a6728\"",
+      "X-Static-Version" : "1cc0811f4855",
+      "X-Content-Type-Options" : "nosniff",
+      "X-Accepted-OAuth-Scopes" : "repository",
+      "X-Render-Time" : "0.0502119064331",
+      "Connection" : "keep-alive",
+      "X-Request-Count" : "3",
+      "X-Frame-Options" : "SAMEORIGIN",
+      "Last-Modified" : "Tue, 30 May 2017 19:15:07 GMT",
+      "X-Version" : "1cc0811f4855",
+      "X-Cache-Info" : "not cacheable; response specified \"Cache-Control: no-cache\""
+    }
+  },
+  "uuid" : "fcb710ea-5634-3056-b717-6963e38fb4e5"
+}

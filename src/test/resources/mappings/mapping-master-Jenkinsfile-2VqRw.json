@@ -1,33 +1,33 @@
 {
-  "id" : "0c31703c-f6e5-343a-9aa2-e7e94cfff051",
+  "id" : "1e92fdd0-1556-3d0c-b232-593f57ab833d",
   "request" : {
-    "url" : "/api/1.0/repositories/cloudbeers/potential-train/raw/master/README.md",
+    "url" : "/api/1.0/repositories/cloudbeers/potential-train/raw/master/Jenkinsfile",
     "method" : "GET"
   },
   "response" : {
     "status" : 200,
-    "bodyFileName" : "body-master-README.md-mnuYC.txt",
+    "bodyFileName" : "body-master-Jenkinsfile-2VqRw.txt",
     "headers" : {
       "Server" : "nginx",
       "Vary" : "Authorization",
       "Cache-Control" : "no-cache, no-store, must-revalidate, max-age=0",
       "Content-Type" : "text/plain; charset=utf-8",
       "Strict-Transport-Security" : "max-age=31536000; includeSubDomains; preload",
-      "Date" : "Tue, 30 May 2017 18:09:45 GMT",
+      "Date" : "Tue, 30 May 2017 19:15:06 GMT",
       "X-Served-By" : "app-162",
-      "Expires" : "Tue, 30 May 2017 18:09:45 GMT",
-      "ETag" : "\"46264bf6cf86190f83b5fabb6b9ae8a8\"",
+      "Expires" : "Tue, 30 May 2017 19:15:06 GMT",
+      "ETag" : "\"6b14af8b57b6ff495f2faa61bf607880\"",
       "X-Static-Version" : "1cc0811f4855",
       "X-Content-Type-Options" : "nosniff",
       "X-Accepted-OAuth-Scopes" : "repository",
-      "X-Render-Time" : "0.0305080413818",
+      "X-Render-Time" : "0.0477449893951",
       "Connection" : "keep-alive",
-      "X-Request-Count" : "53",
+      "X-Request-Count" : "602",
       "X-Frame-Options" : "SAMEORIGIN",
-      "Last-Modified" : "Tue, 30 May 2017 18:09:45 GMT",
+      "Last-Modified" : "Tue, 30 May 2017 19:15:06 GMT",
       "X-Version" : "1cc0811f4855",
       "X-Cache-Info" : "not cacheable; response specified \"Cache-Control: no-cache\""
     }
   },
-  "uuid" : "0c31703c-f6e5-343a-9aa2-e7e94cfff051"
+  "uuid" : "1e92fdd0-1556-3d0c-b232-593f57ab833d"
 }

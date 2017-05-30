@@ -1,33 +1,33 @@
 {
-  "id" : "dde7d055-7fa0-3d39-bae8-9aea6b59cac3",
+  "id" : "321fdcc6-fbdd-3051-b32d-f393335cc407",
   "request" : {
-    "url" : "/api/1.0/repositories/cloudbeers/potential-train/raw/no-jenkinsfile/README.md",
+    "url" : "/api/1.0/repositories/alexjo/bugrep-forest/raw/name%20with%20spaces/Jenkinsfile",
     "method" : "GET"
   },
   "response" : {
     "status" : 200,
-    "bodyFileName" : "body-no-jenkinsfile-README.md-sozRF.txt",
+    "bodyFileName" : "body-name with spaces-Jenkinsfile-d1Olu.txt",
     "headers" : {
       "Server" : "nginx",
       "Vary" : "Authorization",
       "Cache-Control" : "no-cache, no-store, must-revalidate, max-age=0",
       "Content-Type" : "text/plain; charset=utf-8",
       "Strict-Transport-Security" : "max-age=31536000; includeSubDomains; preload",
-      "Date" : "Tue, 30 May 2017 18:09:45 GMT",
-      "X-Served-By" : "app-161",
-      "Expires" : "Tue, 30 May 2017 18:09:45 GMT",
-      "ETag" : "\"46264bf6cf86190f83b5fabb6b9ae8a8\"",
+      "Date" : "Tue, 30 May 2017 19:15:07 GMT",
+      "X-Served-By" : "app-162",
+      "Expires" : "Tue, 30 May 2017 19:15:07 GMT",
+      "ETag" : "\"c8ac55d58ac8da4149ad7537618a6728\"",
       "X-Static-Version" : "1cc0811f4855",
       "X-Content-Type-Options" : "nosniff",
       "X-Accepted-OAuth-Scopes" : "repository",
-      "X-Render-Time" : "0.0372190475464",
+      "X-Render-Time" : "0.0522861480713",
       "Connection" : "keep-alive",
-      "X-Request-Count" : "64",
+      "X-Request-Count" : "621",
       "X-Frame-Options" : "SAMEORIGIN",
-      "Last-Modified" : "Tue, 30 May 2017 18:09:45 GMT",
+      "Last-Modified" : "Tue, 30 May 2017 19:15:07 GMT",
       "X-Version" : "1cc0811f4855",
       "X-Cache-Info" : "not cacheable; response specified \"Cache-Control: no-cache\""
     }
   },
-  "uuid" : "dde7d055-7fa0-3d39-bae8-9aea6b59cac3"
+  "uuid" : "321fdcc6-fbdd-3051-b32d-f393335cc407"
 }
